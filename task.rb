@@ -64,9 +64,8 @@ def q8
   programming_languages = %w(ruby php python javascript)
 
   # 以下に回答を記載
-  programming_languages = %w("ruby", "php", "python", "javascript")
-  programming_languages.capitalize!
-  upper_case_programming_languages = programming_languages.upcase!
+  programming_languages.map(&:capitalize!)
+  upper_case_programming_languages = programming_languages.map(&:upcase)
   # 以下は変更しないで下さい
   p programming_languages
   p upper_case_programming_languages
@@ -123,7 +122,7 @@ def q14
   data = { name: "satou", age: 33, address: "saitama", hobby: "soccer", email: "hoge@fuga.com" }
 
   # 以下に回答を記載
-
+  p array = data.keys
 end
 
 def q15
@@ -131,7 +130,16 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-
+  if data1.include?(:age)
+    puts "OK"
+  else
+    puts "NG"
+  end
+  if data2.include?(:age)
+    puts "OK"
+  else
+    puts "NG"
+  end
 end
 
 def q16
@@ -143,7 +151,7 @@ def q16
   ]
 
   # 以下に回答を記載
-
+  
 end
 
 class UserQ17
