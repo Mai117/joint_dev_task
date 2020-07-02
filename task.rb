@@ -158,14 +158,21 @@ def q16
     { name: "nakamura", age: 41 }
   ]
   # 以下に回答を記載
-  users.each_value do |name, age|
-    puts "私の名前は#{name}です。年齢は#{age}歳です。"
+  users.each do |user|
+    puts "私の名前は#{user[:name]}です。年齢は#{user[:age]}です。"
   end
 end
 
 class UserQ17
   # 以下に回答を記載
+  user1 :name, :age, :gender
 
+  def info(name, age, gender)
+    self.name = name
+    self.age = age
+    self.gender = gender
+  end
+  
 end
 
 def q17
