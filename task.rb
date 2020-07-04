@@ -108,11 +108,12 @@ end
   #   puts "No#{i} #{sport}"
   # end は 全てsportsに対してメソッドだから.で繋げることができる
 
-def q12
+def q12 #多重ハッシュ
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
   puts data[:user][:name]
+  # p data.dig(:user, :name) 上から階層を掘る
 end
 
 def q13
@@ -165,14 +166,19 @@ end
 
 class UserQ17
   # 以下に回答を記載
-  user1 :name, :age, :gender
-
-  def info(name, age, gender)
-    self.name = name
-    self.age = age
-    self.gender = gender
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+    @gender = params[:gender]
   end
-  
+
+  def info
+    puts <<~TEXT
+    名前：#{@name}
+    年齢：#{@age}
+    性別：#{@gender}
+    TEXT
+  end
 end
 
 def q17
@@ -187,7 +193,18 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 
+  def introduce
+    if @age >=15
+      puts "こんにちは，#{@name}と申します。宜しくお願いいたします。"
+    else
+      puts "はいさいまいど〜，#{@name}です！！！"
+    end
+  end
 end
 
 def q18
