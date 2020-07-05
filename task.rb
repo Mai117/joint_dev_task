@@ -220,7 +220,7 @@ class Item
   # 以下を修正して下さい
   attr_reader :name
 
-  def initialize(name)
+  def initialize(name:)
     @name = name
   end
 end
@@ -233,27 +233,32 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  attr_accessor :name, :age
+  attr_reader :name, :age
 
-  def initialize(**params)
-    @name = params[:name]
-    @age = params[:age]
+  def initialize(name:, age:)
+    @name = name
+    @age = age
   end
 end
 
 class Zoo
   # 以下に回答を記載
-  attr_accessor :infant, :children, :adult, :senior
-
-  def initialize(**params)
-    @infant = params[:entry_fee][:infant]
-    @children = params[:entry_fee][:children]
-    @adult = params[:entry_fee][:adult]
-    @senior = params[:entry_fee][:senior]
+  def initialize(name:, entry_fee:)
+    @name = name
+    @entry_fee = entry_fee
   end
 
-  def info_entry_fee
-
+  def info_entry_fee(user)
+    case user.age
+    when 0..5
+      puts "#{user.name}さんの入場料金は#{@entry_fee[:infant]}円です。"
+    when 6..12
+      puts "#{user.name}さんの入場料金は#{@entry_fee[:children]}円です。"
+    when 13..64
+      puts "#{user.name}さんの入場料金は#{@entry_fee[:adult]}円です。"
+    when 65..120
+      puts "#{user.name}さんの入場料金は#{@entry_fee[:senior]}円です。"
+    end
   end
 end
 
